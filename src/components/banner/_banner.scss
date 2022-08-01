@@ -1,0 +1,31 @@
+@use "../../style/variables" as *;
+
+.banner {
+    text-align: center;
+    color: $mainWhite;
+    box-shadow: $boxSh;
+    background: linear-gradient(
+        rgba(0,0,0,.5), 
+        rgba(0,0,0,.5)), 
+        url(../../images/banner-bg.jpg) no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    
+
+    & span {
+        font-size: $fontSlg;
+        text-transform: uppercase;
+    }
+
+    &__title {
+        padding-top: 1rem;
+        text-transform: uppercase;
+    }
+
+    &__description {
+        margin: 1rem auto;
+        max-width: 50rem;
+        line-height: 150%;
+    }
+}

@@ -1,0 +1,69 @@
+@use "../../style/mixins";
+@use "../../style/variables" as *;
+
+.trainers {
+    @include mixins.breakpoint-down(large){
+        padding-top: 5rem;
+    }
+
+    &__container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+        gap: 2rem;
+
+        .trainers__info {
+            max-height: 25rem;
+            overflow: hidden;
+            position: relative;
+            border-radius: .5rem;
+            box-shadow: $boxSh;
+
+            &:hover {
+                .trainers__info-content {
+                    transform: translateY(0);
+                }
+            }
+
+            .trainers__img {
+                height: 100%;
+                width: 100%;
+                object-fit: cover;
+                top: 0;
+            }
+
+            .trainers__info-content {
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                background-color: $mainWhite;
+                color: $mainBlack;
+                padding: 1rem 2rem 2rem 2rem;
+                transform: translateY(6rem);
+                text-transform: capitalize;
+                transition: .3s;
+
+                @include mixins.breakpoint-down(medium){
+                    transform: translateY(6.2rem);
+                }
+
+                & span {
+                    font-size: $fontMd;
+                }
+
+                .trainers__name {
+                    padding-bottom: .5rem;
+                }
+
+                .trainers__socials {
+                    display: flex;
+                    align-items: center;
+                    column-gap: 2rem;
+                    padding-top: 2rem;
+                    margin-top: 1rem;
+                    border-top: .1rem solid $mainRed;
+                }
+            }
+        }
+    }
+}

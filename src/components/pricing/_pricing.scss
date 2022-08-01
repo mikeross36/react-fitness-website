@@ -1,0 +1,78 @@
+@use "../../style/mixins";
+@use "../../style/variables" as *;
+
+.pricing {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+    align-items: center;
+    justify-items: center;
+    gap: 2rem;
+
+    @media screen and (max-width: 992px) {
+        justify-items: start;
+        row-gap: 3rem;
+    }
+
+    &__info {
+        padding: 2rem 20% 2rem 0;
+        color: $mainBlack;
+        border-top: .1rem solid $lightGray;
+
+        @media screen and (max-width: 768px){
+            padding: 3rem 10% 2rem 0;
+        }
+
+        & p:nth-child(3) {
+            display: none;
+        }
+
+        &-title {
+            padding-top: .5rem;
+            text-transform: capitalize;
+        }
+
+        &-description {
+            line-height: 150%;
+            padding: 1rem 0;
+
+            @include mixins.breakpoint-down(medium){
+                width: 70%;
+            }
+        }
+
+        &-includes {
+            display: flex;
+            align-items: center;
+            column-gap: 1rem;
+            text-transform: capitalize;
+            padding: .1rem 0;
+            margin-bottom: .2rem;
+        }
+    }
+
+    .plan {
+        text-align: center;
+        padding: 2rem 2rem 3rem 2rem;
+        box-shadow: 
+        rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, 
+        rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, 
+        rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+
+        &__title {
+            margin-bottom: 1rem;
+            text-transform: capitalize;
+        }
+
+        &__price {
+            padding-bottom: 1rem;
+            font-size: $fontSlg;
+            font-weight: bolder;
+            color: $mainRed;
+
+            & span {
+                padding: 0 .5rem;
+            }
+        }
+    }
+}

@@ -1,0 +1,109 @@
+@use "../../style/mixins";
+@use "../../style/variables" as *;
+
+.home {
+    padding: 0;
+    padding-top: 4.5rem;
+    height: 100%;
+
+    .slider__wrapper {
+        position: relative;
+
+        .home__slide {
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            min-height: 90vh;
+            padding: 2rem 9%;
+            display: flex;
+            align-items: center;
+            transition: .3s;
+            display: none;
+
+            &-img {
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                z-index: -1;
+            }
+
+            &.active-slide {
+                display: flex;
+            }
+
+            & > * {
+                animation: slideScale .2s linear .2s backwards;
+            }
+    
+            @include mixins.breakpoint-down(large) {
+                padding: 2rem 5%;
+            }
+    
+            .slide__content {
+                width: 60rem;
+    
+                @include mixins.breakpoint-down(large) {
+                    width: 45rem;
+                }
+    
+                .slide__text {
+                    font-size: $fontMd;
+                    color: $mainWhite;
+                    text-shadow: $textSh;
+                    text-transform: uppercase;
+                    display: block;
+                }
+    
+                .slide__title {
+                    color: $mainWhite;
+                    padding: 1rem 0;
+                    text-shadow: $textSh;
+                }
+            }
+        }
+
+        @keyframes slideScale {
+            0% {
+                opacity: 0;
+                transform: scale(.7);
+            }
+        }
+    }
+
+    .slider__nav {
+        position: absolute;
+        bottom: 5%;
+        left: 50%;
+        transform: translateX(-50%);
+        text-align: center;
+
+        &-link {
+            display: inline-block;
+            height: 2rem;
+            width: 2rem;
+            background-color: yellow;
+            opacity: .5;
+            margin: 0 .7rem;
+            border-radius: 50%;
+            cursor: pointer;
+
+            @include mixins.breakpoint-down(medium) {
+                height: 1.5rem;
+                width: 1.5rem;
+                margin: 0 .6rem;
+            }
+            
+            &.active-link {
+                background-color: $mainRed;
+                border: 2px solid $mainWhite;
+                opacity: 1;
+            }
+        }
+    }
+
+}

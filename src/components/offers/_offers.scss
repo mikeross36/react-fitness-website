@@ -1,0 +1,76 @@
+@use "../../style/mixins";
+@use "../../style/variables" as *;
+
+.offers {
+    .heading {
+        padding-top: 2rem;
+
+        @include mixins.breakpoint-down(large){
+            padding-top: 4rem;
+        }
+    }
+
+    &__container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+        
+        &:hover .offers__box-img {
+            transform: scale(1.1);
+        }
+
+        .offers__box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            row-gap: 1rem;
+
+            @include mixins.breakpoint-down(medium){
+                margin-bottom: 1rem;
+            }
+        
+            &:nth-child(even) {
+                display: flex;
+                flex-flow: column-reverse;
+    
+                @include mixins.breakpoint-down(medium){
+                    flex-flow: column;
+                }
+            }
+
+            &-image {
+                height: 16rem;
+                overflow: hidden;
+
+                .offers__box-img {
+                    height: 100%;
+                    object-fit: cover;
+                    transition: .3s;
+                }
+            }
+
+            .offers__box-content {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                padding: 0 1rem 1rem 1rem;
+                text-align: center;
+
+                .box__icon {
+                    height: 4rem;
+                    margin-bottom: .5rem;
+                }
+
+                .box__title {
+                    color: $mainRed;
+                    text-transform: uppercase;
+                }
+
+                .box__description {
+                    line-height: 150%;
+                    color: $lightGray;
+                    padding: .5rem 7%;
+                }
+            }
+        }
+    }
+}

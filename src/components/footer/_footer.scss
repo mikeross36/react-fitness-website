@@ -1,0 +1,87 @@
+@use "../../style/mixins";
+@use "../../style/variables" as *;
+
+.footer {
+    padding: 5rem 9%;
+
+    @include mixins.breakpoint-down(large){
+        padding: 3rem 9%;
+    }
+
+    &__container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+        justify-items: start;
+        column-gap: 3rem;
+        row-gap: 2rem;
+        border-top: 1px solid $lightGray;
+        padding-top: 2rem;
+
+        .footer__box {
+            text-transform: capitalize;
+
+            & h4 {
+                color: $mainBlack;
+                padding: 1rem 0;
+            }
+
+            & a {
+                display: block;
+                color: $mainBlack;
+                font-weight: 500;
+            }
+        }
+
+        .footer__link,
+        .hours__link,
+        .info__link,
+        .share__box {
+            font-size: $fontMd;
+            padding: .6rem 0;
+        }
+
+        .footer__link {
+            display: block;
+
+            &:hover {
+                color: $mainRed;
+            }
+        }
+
+        .hours__link,
+        .info__link,
+        .share__box {
+            display: flex;
+            column-gap: 1rem;
+        }
+
+        .share__box {
+            column-gap: 2rem;
+            line-height: 200%;
+
+            & img {
+                width: 2rem;
+                height: 2rem;
+            }
+        }
+
+        .subscribe__description {
+            font-size: $fontMd;
+            margin-bottom: 1.5rem;
+        }
+
+        .email__input {
+            margin-bottom: 1rem;
+            width: 100%;
+            padding: 1.2rem;
+            border: 1px solid $lightGray;
+        }
+    }
+
+    .copy__rights {
+        font-size: $fontSm;
+        text-align: center;
+        margin-top: 2rem;
+        line-height: 150%;
+    }
+}

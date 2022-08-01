@@ -1,0 +1,117 @@
+@use "../../style/mixins";
+@use "../../style/variables" as *;
+
+.about {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+    justify-items: start;
+    column-gap: 6rem;
+    row-gap: 2rem;
+
+    @include mixins.breakpoint-down(medium) {
+        grid-template-columns: 1fr;
+        row-gap: 1rem;
+    }
+
+    &__image {
+        position: relative;
+        height: fit-content;
+        align-self: center;
+        margin-top: 2rem;
+
+        &::before,
+        &::after {
+            content: "";
+            position: absolute;
+            z-index: -1;
+            background-color: $mainRed;
+            height: 15rem;
+            width: 15rem;
+        }
+
+        &::before {
+            top: 0;
+            left: 0;
+        }
+
+        &::after {
+            bottom: 0;
+            right: 0;
+        }
+
+        .about__img {
+            padding: 1rem;
+            object-fit: cover;
+        }
+    }
+
+    .about__content {
+        padding-top: 3rem;
+
+        @include mixins.breakpoint-down(medium) {
+            padding: 0 1rem 1rem 1rem;
+        }
+
+        .about__intro {
+            font-weight: 700;
+            color: $mainRed;
+            text-transform: uppercase;
+        }
+
+        .about__title {
+            color: $mainBlack;
+            margin-top: .5rem;
+            line-height: 110%;
+        }
+
+        .about__text {
+            color: $mainBlack;
+            padding: 1rem  1rem 1rem 0;
+            line-height: 170%;
+
+            @include mixins.breakpoint-down(large) {
+                padding: .5rem  .5rem .5rem 0;
+                line-height: 140%;
+            }
+        }
+
+        .about__container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            justify-items: start;
+            align-items: center;
+            gap: 1rem;
+            margin-top: 1rem;
+
+            @include mixins.breakpoint-down(small) {
+               row-gap: .5rem;
+            }
+
+            .container__item {
+
+                &-title {
+                    display: flex;
+                    align-items: center;
+                    column-gap: .5rem;
+                    color: $mainBlack;
+                    text-transform: capitalize;
+
+                    @include mixins.breakpoint-down(medium) {
+                        font-size: $fontMd;
+                    }
+                }
+
+                &-text {
+                    color: $mainBlack;
+                    padding: 1rem 2rem 1rem 0;
+                    line-height: 150%;
+
+                    @include mixins.breakpoint-down(medium) {
+                        padding: .5rem .5rem .5rem 0;
+                        line-height: 140%;
+                    }
+                }
+            }
+        }
+    }
+}
